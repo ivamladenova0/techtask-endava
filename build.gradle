@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id "io.qameta.allure" version "2.8.1"
+}
+
+group 'com.ivamladenova'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+
+}
+
+dependencies {
+    compile group: 'io.qameta.allure', name: 'allure-generator', version: '2.12.1'
+    compile group: 'io.qameta.allure', name: 'allure-gradle', version: '2.5'
+    compile group: 'io.qameta.allure', name: 'allure-testng', version: '2.12.1'
+    compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.6.2'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: '3.141.59'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.6.2'
+    testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
+
+    allure {
+
+        aspectjweaver = true
+        autoconfigure = true
+        version = '2.2.1'
+    }
+
+    test {
+        systemProperty 'env', findProperty('env')
+        systemProperty 'browserType', findProperty('browserType')
+        println "Starting tests on browser: ${browserType}"
+        println "Starting tests on environment: ${env}"
+        useTestNG()
+    }
+}
