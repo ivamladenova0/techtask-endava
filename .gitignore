@@ -12,6 +12,7 @@
 **/allure-results
 **/build
 **/out
+**/.allure
 
 # OS generated files #
 ######################
