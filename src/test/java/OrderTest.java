@@ -22,6 +22,5 @@ public class OrderTest extends BaseTest {
                 .andIVerifyPriceIsCorrect()
                 .andWhenIGoToShoppingCart()
                 .thenIVerifyPriceIsCorrect();
-
     }
 }

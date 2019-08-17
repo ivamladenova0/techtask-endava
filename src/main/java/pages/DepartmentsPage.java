@@ -15,7 +15,7 @@ public class DepartmentsPage extends BasePage {
 public DepartmentsPage(WebDriver driver) { super(driver); }
 
     @FindBy(how = How.XPATH, using = "//a[contains(@data-a-expander-toggle,'Departments')]")
-    public WebElement expandAllDepartmentsElement;
+    private WebElement expandAllDepartmentsElement;
 
     @FindAll(@FindBy(how = How.CSS, using = "#departments span>a>span"))
     private List<WebElement> deparmentElements;

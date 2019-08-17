@@ -16,16 +16,16 @@ public class DepartmentPage extends BasePage {
     verifyPageisLoaded(driver);}
 
     @FindBy(how = How.ID, using = "low-price")
-    public WebElement minPriceElement;
+    private WebElement minPriceElement;
 
     @FindBy(how = How.ID, using = "high-price")
-    public WebElement maxPriceElement;
+    private WebElement maxPriceElement;
 
     @FindBy(how = How.CSS, using = "#priceRefinements ul>li>span * span>input")
-    public WebElement priceFilterButton;
+    private WebElement priceFilterButton;
 
     @FindBy(how = How.CSS, using = "div[data-index='0'] h2>a")
-    public WebElement firstResultElement;
+    private WebElement firstResultElement;
 
     @FindAll(@FindBy(how = How.CSS, using = "#brandsRefinements ul li span a"))
     private List<WebElement> brandElements;

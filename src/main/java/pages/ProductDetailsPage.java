@@ -15,10 +15,10 @@ public class ProductDetailsPage extends BasePage {
     }
 
     @FindBy(how = How.ID, using = "add-to-cart-button")
-    public WebElement addToCartButton;
+    private WebElement addToCartButton;
 
     @FindBy(how = How.ID, using = "quantity")
-    public WebElement quantityElement;
+    private WebElement quantityElement;
 
     @FindBy(how = How.ID, using = "newPriceRow")
     private WebElement priceBigForSingleItemElement;
@@ -31,7 +31,6 @@ public class ProductDetailsPage extends BasePage {
         verifyPageisLoaded(driver);
         Select quantitySelect = new Select(quantityElement);
         quantitySelect.selectByVisibleText(expectedSelectValue);
-
         priceInDetailsForSingleProduct = Double.parseDouble(priceBigForSingleItemElement.getText().replace("$ ", "").replace(" ", "."));
         quantityValue = Double.parseDouble(expectedSelectValue);
         actualPriceForQuantityOfProduct = quantityValue * priceInDetailsForSingleProduct;

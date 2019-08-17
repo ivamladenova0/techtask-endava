@@ -17,10 +17,10 @@ public class HomePage extends BasePage{
     String baseURL = PropertyReader.baseURL;
 
     @FindBy(how = How.ID, using = "twotabsearchtextbox")
-    public WebElement searchFieldElement;
+    private WebElement searchFieldElement;
 
     @FindBy(how = How.CSS, using = ".nav-search-submit.nav-sprite")
-    public WebElement searchButton;
+    private WebElement searchButton;
 
     public double priceInResults;
     public double quantityValue;

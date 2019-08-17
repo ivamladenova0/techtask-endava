@@ -28,6 +28,5 @@ public class ShoppingCartPage extends BasePage {
         priceForAllProductsInCart = convertToDoubleValue(priceforAllProductsElement);
         Assert.assertEquals(ProductDetailsPage.priceInDetailsForSingleProduct, priceForSingleProduct);
         Assert.assertEquals(priceForAllProductsInSubtotal, priceForAllProductsInCart);
-
     }
 }
