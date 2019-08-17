@@ -28,6 +28,7 @@ public class ProductDetailsPage extends BasePage {
     public static Double actualPriceForQuantityOfProduct;
 
     public ProductDetailsPage andIPickQuantity(String expectedSelectValue) {
+        waitForVisibilityOf(quantityElement);
         verifyPageisLoaded(driver);
         Select quantitySelect = new Select(quantityElement);
         quantitySelect.selectByVisibleText(expectedSelectValue);
@@ -39,6 +40,7 @@ public class ProductDetailsPage extends BasePage {
 
     @Step
     public CartSubtotalPage andIAddItemToCart() {
+        waitForVisibilityOf(quantityElement);
         verifyPageisLoaded(driver);
         click(addToCartButton);
         return new PageFactory().initElements(driver, CartSubtotalPage.class);

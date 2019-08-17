@@ -22,6 +22,7 @@ public class ShoppingCartPage extends BasePage {
 
     @Step
     public void thenIVerifyPriceIsCorrect(){
+        waitForVisibilityOf(priceforAllProductsElement);
         verifyPageisLoaded(driver);
         priceForSingleProduct = convertToDoubleValue(priceForSingleProductElement);
         Double priceForAllProductsInSubtotal = CartSubtotalPage.priceForAllProductsInCartSubtotal;

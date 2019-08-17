@@ -33,6 +33,7 @@ public class HomePage extends BasePage{
 
     @Step
     public DepartmentsPage whenISearchItem(String searchText){
+        waitForVisibilityOf(searchFieldElement);
         writeText(searchFieldElement, searchText);
         click(searchButton);
 

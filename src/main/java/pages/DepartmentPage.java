@@ -32,6 +32,7 @@ public class DepartmentPage extends BasePage {
 
     @Step
     public DepartmentPage andIFilterPrice(String expectedMinPrice, String expectedMaxPrice){
+        waitForVisibilityOf(minPriceElement);
         verifyPageisLoaded(driver);
         writeText(minPriceElement, expectedMinPrice);
         writeText(maxPriceElement, expectedMaxPrice);
@@ -41,6 +42,7 @@ public class DepartmentPage extends BasePage {
 
     @Step
     public DepartmentPage andIFilterBrand(String expectedBrand){
+        waitForVisibilityOf(priceFilterButton);
         WebElement brand = findElementFromElements(brandElements, expectedBrand);
         click(brand);
         return this;
@@ -48,6 +50,7 @@ public class DepartmentPage extends BasePage {
 
     @Step
     public ProductDetailsPage andIOpenDetailsPageForFirstItem(){
+        waitForVisibilityOf(firstResultElement);
         click(firstResultElement);
         verifyPageisLoaded(driver);
         return new PageFactory().initElements(driver,ProductDetailsPage.class);

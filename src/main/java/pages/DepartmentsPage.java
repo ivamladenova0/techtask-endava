@@ -28,6 +28,7 @@ public DepartmentsPage(WebDriver driver) { super(driver); }
 
     @Step
     public DepartmentPage andIPickDepartment(String expectedDepartment) {
+        waitForVisibilityOf(expandAllDepartmentsElement);
        WebElement department = findElementFromElements(deparmentElements, expectedDepartment);
        click(department);
        return new PageFactory().initElements(driver,DepartmentPage.class);
