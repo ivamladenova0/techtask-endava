@@ -1,5 +1,5 @@
-# Run tests and generate allure reports with command
+# Run tests and generate reports with command
 ```
-gradlew clean test -PbrowserType=Chrome -Penv=PROD allureServe
+gradlew clean test -PbrowserType=Chrome -Penv=PROD allureReport
 ```
 
