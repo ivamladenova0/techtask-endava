@@ -5,5 +5,5 @@ gradlew clean test
 
 ## generate reports with command
 ```
-allureServe
+gradlew allureServe
 ```
