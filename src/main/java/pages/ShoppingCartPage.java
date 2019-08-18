@@ -16,15 +16,15 @@ public class ShoppingCartPage extends BasePage {
     @FindBy(how = How.CSS, using = ".a-size-medium.a-color-price.sc-price.sc-white-space-nowrap.sc-price-sign")
     static WebElement priceForAllProductsElement;
 
-    public static Double priceForSingleProduct;
+    public static Double priceForSingleProductInCart;
     private static Double priceForAllProductsInCart;
 
     @Step
     public void thenIVerifyPriceIsCorrect(){
         waitForVisibilityOf(priceForAllProductsElement);
-        priceForSingleProduct = convertToDoubleValue(priceForSingleProductElement);
+        priceForSingleProductInCart = convertToDoubleValue(priceForSingleProductElement);
         priceForAllProductsInCart = convertToDoubleValue(priceForAllProductsElement);
-        Assert.assertEquals(ProductDetailsPage.priceInDetailsForSingleProduct, priceForSingleProduct, "Price for single product differs, expected: " + ProductDetailsPage.priceInDetailsForSingleProduct + " actual: " + priceForSingleProduct);
-        Assert.assertEquals(CartSubtotalPage.priceForAllProductsInCartSubtotal, priceForAllProductsInCart, "Price for quantity of products differs, expected: " + CartSubtotalPage.priceForAllProductsInCartSubtotal + " actual: " + priceForAllProductsInCart);
+        Assert.assertEquals(priceForSingleProductInCart, ProductDetailsPage.priceInDetailsForSingleProduct, "Price for single product differs, expected: " + ProductDetailsPage.priceInDetailsForSingleProduct + " actual: " + priceForSingleProductInCart);
+        Assert.assertEquals(priceForAllProductsInCart, CartSubtotalPage.priceForAllProductsInCartSubtotal, "Price for quantity of products differs, expected: " + CartSubtotalPage.priceForAllProductsInCartSubtotal + " actual: " + priceForAllProductsInCart);
     }
 }
