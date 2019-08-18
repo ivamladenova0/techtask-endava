@@ -1,14 +1,14 @@
 package pages;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
+
+import java.util.List;
 
 public class ProductDetailsPage extends BasePage {
 
@@ -29,26 +29,27 @@ public class ProductDetailsPage extends BasePage {
     public static Double priceInDetailsForSingleProduct;
     public static Double actualPriceForQuantityOfProduct;
 
-    public void selectFromDropDown(Select dropDown){
+    //In case only one item is left - picks 1
+    public void selectTwoFromQuantityDropDown(){
+        Select quantitySelect = new Select(quantityElement);
+        List<WebElement> quantityOptions = quantitySelect.getOptions();
 
-      if (dropDown.isMultiple()){
-          dropDown.selectByVisibleText("2");
+      if (quantityOptions.size() > 1){
+          quantitySelect.selectByVisibleText("2");
           quantityValue = 2.0;
       }
 
      else {
-           System.out.println("..Selecting available option..");
-           dropDown.selectByIndex(0);
-           quantityValue = 1.0;
+          System.out.println("..Selecting available option..");
+          quantitySelect.selectByIndex(0);
+          quantityValue = 1.0;
        }
 
     }
 
     public ProductDetailsPage andIPickQuantity() {
         waitForVisibilityOf(quantityElement);
-        verifyPageisLoaded(driver);
-        Select quantitySelect = new Select(quantityElement);
-        selectFromDropDown(quantitySelect);
+        selectTwoFromQuantityDropDown();
         priceInDetailsForSingleProduct = Double.parseDouble(priceBigForSingleItemElement.getText().replace("$ ", "").replace(" ", "."));
         actualPriceForQuantityOfProduct = quantityValue * priceInDetailsForSingleProduct;
         return this;
@@ -57,7 +58,6 @@ public class ProductDetailsPage extends BasePage {
     @Step
     public CartSubtotalPage andIAddItemToCart() {
         waitForVisibilityOf(quantityElement);
-        verifyPageisLoaded(driver);
         click(addToCartButton);
         return new PageFactory().initElements(driver, CartSubtotalPage.class);
     }

@@ -21,7 +21,6 @@ public class CartSubtotalPage extends BasePage {
 
     @Step
     public CartSubtotalPage andIVerifyPriceIsCorrect(){
-        verifyPageisLoaded(driver);
         waitForVisibilityOf(cartButton);
         priceForAllProductsInCartSubtotal = convertToDoubleValue(priceSubtotalForAllProductsInCartElement);
         Assert.assertEquals(ProductDetailsPage.actualPriceForQuantityOfProduct, priceForAllProductsInCartSubtotal);
@@ -30,7 +29,7 @@ public class CartSubtotalPage extends BasePage {
 
     @Step
     public ShoppingCartPage andWhenIGoToShoppingCart(){
-        verifyPageisLoaded(driver);
+        waitForVisibilityOf(cartButton);
         click(cartButton);
         return new PageFactory().initElements(driver, ShoppingCartPage.class);
     }

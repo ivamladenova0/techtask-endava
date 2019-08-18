@@ -12,8 +12,7 @@ import java.util.List;
 
 public class DepartmentPage extends BasePage {
 
-    public DepartmentPage(WebDriver driver) { super(driver);
-    verifyPageisLoaded(driver);}
+    public DepartmentPage(WebDriver driver) { super(driver);}
 
     @FindBy(how = How.ID, using = "low-price")
     private WebElement minPriceElement;
@@ -33,7 +32,6 @@ public class DepartmentPage extends BasePage {
     @Step
     public DepartmentPage andIFilterPrice(String expectedMinPrice, String expectedMaxPrice){
         waitForVisibilityOf(minPriceElement);
-        verifyPageisLoaded(driver);
         writeText(minPriceElement, expectedMinPrice);
         writeText(maxPriceElement, expectedMaxPrice);
         click(priceFilterButton);
@@ -52,7 +50,6 @@ public class DepartmentPage extends BasePage {
     public ProductDetailsPage andIOpenDetailsPageForFirstItem(){
         waitForVisibilityOf(firstResultElement);
         click(firstResultElement);
-        verifyPageisLoaded(driver);
         return new PageFactory().initElements(driver,ProductDetailsPage.class);
     }
 
