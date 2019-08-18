@@ -1,3 +1,8 @@
+## Run tests from command line
+```
+gradlew clean test -PbrowserType=Chrome -Penv=PROD
+
+
 ## Run tests from command line and generate reports with command
 ```
 gradlew clean test -PbrowserType=Chrome -Penv=PROD allureServe
