@@ -34,9 +34,5 @@ allure {
 }
 
 test {
-    systemProperty 'env', findProperty('env')
-    systemProperty 'browserType', findProperty('browserType')
-    println "Starting tests on browser: ${browserType}"
-    println "Starting tests on environment: ${env}"
     useTestNG()
 }

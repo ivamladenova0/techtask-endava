@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.PageGenerator;
+import utils.PropertyReader;
 
 import java.util.Set;
 
@@ -22,8 +23,7 @@ public class BaseTest {
 
     @BeforeMethod
     public void classLevelSetup() {
-        String browserType = System.getProperty("browserType");
-        switch (browserType) {
+        switch (PropertyReader.browserType) {
             case "Chrome":
                 ChromeDriverManager.getInstance(DriverManagerType.CHROME).setup();
                 ChromeOptions options = new ChromeOptions();

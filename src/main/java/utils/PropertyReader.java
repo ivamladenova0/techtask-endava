@@ -8,7 +8,8 @@ import java.util.Properties;
 
 public class PropertyReader {
 
-    public static final String baseURL = getProperty("baseUrl");
+    public static String baseURL = getProperty("baseUrl");
+    public static String browserType = getProperty("browserType");
 
 
     /**
@@ -33,8 +34,7 @@ public class PropertyReader {
 
 
     private static Properties readProperties() throws IOException {
-        String env = System.getProperty("env");
-        Path filePath = Utils.getResourcePath("config/" + env + ".properties");
+        Path filePath = Utils.getResourcePath("config/PROD.properties");
         InputStream input = new FileInputStream(filePath.toString());
         Properties prop = new Properties();
         prop.load(input);
