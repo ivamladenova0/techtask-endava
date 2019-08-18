@@ -11,8 +11,9 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     jcenter()
-
 }
+
+apply plugin: 'io.qameta.allure'
 
 dependencies {
     compile group: 'io.qameta.allure', name: 'allure-commandline', version: '2.12.1'
@@ -24,21 +25,18 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
     compile group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '3.6.2'
     compile group: 'org.testng', name: 'testng', version: '6.14.3'
+}
 
-    apply plugin: 'io.qameta.allure'
+allure {
+    aspectjweaver = true
+    autoconfigure = true
+    version = '2.12.1'
+}
 
-    allure {
-
-        aspectjweaver = true
-        autoconfigure = true
-        version = '2.12.1'
-    }
-
-    test {
-        systemProperty 'env', findProperty('env')
-        systemProperty 'browserType', findProperty('browserType')
-        println "Starting tests on browser: ${browserType}"
-        println "Starting tests on environment: ${env}"
-        useTestNG()
-    }
+test {
+    systemProperty 'env', findProperty('env')
+    systemProperty 'browserType', findProperty('browserType')
+    println "Starting tests on browser: ${browserType}"
+    println "Starting tests on environment: ${env}"
+    useTestNG()
 }
