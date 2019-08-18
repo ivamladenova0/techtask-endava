@@ -1,12 +1,14 @@
 package pages;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 public class ProductDetailsPage extends BasePage {
 
@@ -27,13 +29,27 @@ public class ProductDetailsPage extends BasePage {
     public static Double priceInDetailsForSingleProduct;
     public static Double actualPriceForQuantityOfProduct;
 
-    public ProductDetailsPage andIPickQuantity(String expectedSelectValue) {
+    public void selectFromDropDown(Select dropDown){
+
+      if (dropDown.isMultiple()){
+          dropDown.selectByVisibleText("2");
+          quantityValue = 2.0;
+      }
+
+     else {
+           System.out.println("..Selecting available option..");
+           dropDown.selectByIndex(0);
+           quantityValue = 1.0;
+       }
+
+    }
+
+    public ProductDetailsPage andIPickQuantity() {
         waitForVisibilityOf(quantityElement);
         verifyPageisLoaded(driver);
         Select quantitySelect = new Select(quantityElement);
-        quantitySelect.selectByVisibleText(expectedSelectValue);
+        selectFromDropDown(quantitySelect);
         priceInDetailsForSingleProduct = Double.parseDouble(priceBigForSingleItemElement.getText().replace("$ ", "").replace(" ", "."));
-        quantityValue = Double.parseDouble(expectedSelectValue);
         actualPriceForQuantityOfProduct = quantityValue * priceInDetailsForSingleProduct;
         return this;
     }

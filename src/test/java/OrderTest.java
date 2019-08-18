@@ -17,7 +17,7 @@ public class OrderTest extends BaseTest {
                 .andIFilterPrice("10", "150")
                 .andIFilterBrand("Warner Bros")
                 .andIOpenDetailsPageForFirstItem()
-                .andIPickQuantity("2")
+                .andIPickQuantity()
                 .andIAddItemToCart()
                 .andIVerifyPriceIsCorrect()
                 .andWhenIGoToShoppingCart()
